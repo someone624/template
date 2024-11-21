@@ -25,7 +25,25 @@ cd REPOSITORY
 pip install -r requirements.txt
 ```
 
-##
+## 🎮 Usage
+1. Run the project
+- ```bash
+  python src/main.py
+  ```
+2. API usage
+- ```bash
+  curl -X GET http://localhost:8000/api/v1/example
+  ```
+
+## 🧑‍💻 Development
+1. Run tests
+- ```bash
+  pytest
+  ```
+2. Lint your code
+- ```bash
+  flake8 src/
+  ```
 
 ## Credits
 - [Royyan Wijaya](https://www.flaticon.com/free-icons/code)
