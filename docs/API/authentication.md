@@ -16,7 +16,7 @@ Register your application to obtain a `client_id` and `client_secret`.
 ---
 
 ### 2. Request an Access Token
-Use the `/auth/token` endpoint to obtain an access token.
+Use the ```/auth/token``` endpoint to obtain an access token.
 
 #### Endpoint:
 ```http
@@ -24,9 +24,9 @@ POST /auth/token
 ```
 
 **Required Body Parameters:**
-- client_id (string): Your client ID.
-- client_secret (string): Your client secret.
-- grant_type (string): Set to client_credentials.
+- ```client_id``` (string): Your client ID.
+- ```client_secret``` (string): Your client secret.
+- ```grant_type``` (string): Set to client_credentials.
 
 **Example Request**
 ```http
@@ -59,3 +59,40 @@ Include the ```access_token``` in the ```Authorization``` header for all request
 GET /v1/users
 Authorization: Bearer eyJhbGc...dXJsIiw
 ```
+
+---
+
+## 🔁 Refreshing Tokens
+Tokens expire after 1 hour. Use the ```/auth/refresh``` endpoint to get a new access token.
+
+**Endpoint**
+```http
+POST /auth/refresh
+```
+
+**Required Body Parameters:**
+- ```refresh_token``` (string): Your refresh token.
+
+**Example Request**
+```http
+POST /auth/refresh
+Content-Type: application/json
+
+{
+  "refresh_token": "your-refresh-token"
+}
+```
+
+**Example Response**
+```json
+{
+  "access_token": "new-access-token",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}
+```
+
+---
+
+## 🛑 Common Errors
+- Check the [Trobbleshooting](../trobbleshooting.md) file for errors
