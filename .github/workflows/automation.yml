@@ -1,0 +1,30 @@
+name: Automation Tasks
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Runs every Monday at midnight
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened, closed]
+
+jobs:
+  label-issues:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Automatically Label Issues
+        uses: actions/labeler@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+  close-stale-prs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Close Stale Pull Requests
+        uses: actions/stale@v7
+        with:
+          days-before-stale: 30
+          days-before-close: 7
+          stale-label: "stale"
