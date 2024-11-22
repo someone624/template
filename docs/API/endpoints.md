@@ -106,4 +106,4 @@ Additional Endpoints:
 
 ## Notes
 - Include the `Authorization` header with every request.
-- Refer to the [Authentication Guide](authorization.md) for token details.
+- Refer to the [Authentication Guide](authentication.md) for token details.
