@@ -95,4 +95,4 @@ Content-Type: application/json
 ---
 
 ## Common Errors
-- Check the [Trobbleshooting](../trobbleshooting.md) file for errors
+- Check the [Trobbleshooting](../troubleshooting.md) file for errors
