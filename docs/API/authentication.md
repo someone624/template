@@ -1,10 +1,10 @@
-# 🔐 Authentication
+# Authentication
 
 This document explains how to authenticate with the **Project Name** API. The API uses **OAuth 2.0 Bearer Tokens** for secure access.
 
 ---
 
-## 🌟 Steps to Authenticate
+## Steps to Authenticate
 
 ### 1. Register Your Application
 Register your application to obtain a `client_id` and `client_secret`.
@@ -51,7 +51,7 @@ Content-Type: application/json
 
 ---
 
-## 📘 Using the Access Token
+## Using the Access Token
 Include the ```access_token``` in the ```Authorization``` header for all requests.
 
 **Example Request**
@@ -62,7 +62,7 @@ Authorization: Bearer eyJhbGc...dXJsIiw
 
 ---
 
-## 🔁 Refreshing Tokens
+## Refreshing Tokens
 Tokens expire after 1 hour. Use the ```/auth/refresh``` endpoint to get a new access token.
 
 **Endpoint**
@@ -94,5 +94,5 @@ Content-Type: application/json
 
 ---
 
-## 🛑 Common Errors
+## Common Errors
 - Check the [Trobbleshooting](../trobbleshooting.md) file for errors
