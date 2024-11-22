@@ -1,6 +1,6 @@
 # API Endpoints
 
-This document lists all available endpoints for the **Project Name** API.
+This document lists most available endpoints for the **Project Name** API.
 
 ---
 
@@ -88,6 +88,21 @@ Gets data of key analytics
 Gets sales data
 
 ---
+
+#### List of all endpoints
+- GET `/users`
+- POST `/users`
+- GET `/products`
+- POST `/products`
+- GET `/analytics/overview`
+- GET `analytics/sales`
+
+Additional Endpoints:
+- GET `/users/{id}`       - Gets user by ID
+- DELETE `/users/{id}`    - Deletes a user
+- GET `/orders`           - Gets a list of all orders
+- GET `/orders/{id}`      - Gets data about a specific order
+- POST `/orders`          - Makes a new order
 
 ## Notes
 - Include the `Authorization` header with every request.
