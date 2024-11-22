@@ -1,10 +1,10 @@
-# 📚 Documentation
+# Documentation
 
 Welcome to the documentation for **Project Name**! This folder contains all the resources and guides you'll need to get started, contribute, and dive deep into the project.
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 
 1. [Setup Guide](./setup-guide.md)  
    Step-by-step instructions to get the project up and running on your system.
@@ -30,7 +30,7 @@ Welcome to the documentation for **Project Name**! This folder contains all the 
 
 ---
 
-## 📂 Folder Structure
+## Folder Structure
 
 Here’s a quick look at the contents of the `docs/` directory:
 
@@ -51,7 +51,7 @@ docs/                         # Documentation folder
 
 ---
 
-## ✨ How to Use
+## How to Use
 
 - **New to the project?** Start with the [Setup Guide](./setup-guide.md).  
 - **Contributing?** Check out the [Contributing Guide](./CONTRIBUTING.md).  
@@ -60,7 +60,7 @@ docs/                         # Documentation folder
 
 ---
 
-## 📬 Feedback
+## Feedback
 
 If you have suggestions or corrections for this documentation, please feel free to open an issue or submit a pull request. We’re always looking to improve!
 
