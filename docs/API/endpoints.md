@@ -90,19 +90,20 @@ Gets sales data
 ---
 
 #### List of all endpoints
-- GET `/users`
-- POST `/users`
-- GET `/products`
-- POST `/products`
-- GET `/analytics/overview`
-- GET `analytics/sales`
+- <img src="../../icons/http-get.png"> `/users`
+- <img src="../../icons/http-post.png"> `/users`
+- <img src="../../icons/http-get.png"> `/products`
+- <img src="../../icons/http-post.png"> `/products`
+- <img src="../../icons/http-get.png"> `/analytics/overview`
+- <img src="../../icons/http-get.png"> `analytics/sales`
 
 Additional Endpoints:
-- GET `/users/{id}`       - Gets user by ID
-- DELETE `/users/{id}`    - Deletes a user
-- GET `/orders`           - Gets a list of all orders
-- GET `/orders/{id}`      - Gets data about a specific order
-- POST `/orders`          - Makes a new order
+- <img src="../../icons/http-put.png"> `/users/{id}`       - Changes user data
+- <img src="../../icons/http-get.png"> `/users/{id}`       - Gets user by ID
+- <img src="../../icons/http-delete.png"> `/users/{id}`    - Deletes a user
+- <img src="../../icons/http-get.png"> `/orders`           - Gets a list of all orders
+- <img src="../../icons/http-get.png"> `/orders/{id}`      - Gets data about a specific order
+- <img src="../../icons/http-post.png"> `/orders`          - Makes a new order
 
 ## Notes
 - Include the `Authorization` header with every request.
