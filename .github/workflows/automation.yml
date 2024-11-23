@@ -13,18 +13,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
       - name: Automatically Label Issues
         uses: actions/labeler@v3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-  close-stale-prs:
+  close-duplicate-and-wontfix:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Close Stale Pull Requests
-        uses: actions/stale@v7
+      - name: Close Duplicate and Wontfix Issues
+        uses: peter-evans/close-issue@v3
         with:
-          days-before-stale: 30
-          days-before-close: 7
-          stale-label: "stale"
+          comment: |
+            This issue has been automatically closed because it has been labeled as `{{ label }}`.
+          labels: duplicate, wontfix
