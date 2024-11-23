@@ -4,30 +4,38 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # Allow manual triggering of the workflow
+  workflow_dispatch: # Allows manual trigger for deployment
+    inputs:
+      environment:
+        description: "Environment to deploy to (staging/production)"
+        required: true
+        default: "production"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
+      # Step 3: Install Dependencies
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Application
-        run: npm run build
-
-      - name: Deploy to Production
+      # Step 4: Run the Deployment Script
+      - name: Deploy to Environment
         env:
-          DEPLOY_API_KEY: ${{ secrets.DEPLOY_API_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          echo "Deploying application..."
-          ./deploy.sh production
+          mkdir -p ~/.ssh
+          echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ./scripts/deploy.sh ${{ github.event.inputs.environment || 'production' }}
