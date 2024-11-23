@@ -1,0 +1,18 @@
+queries:
+  - uses: github/codeql/javascript-queries@latest
+  - uses: github/codeql/python-queries@latest
+  - uses: github/codeql/java-queries@latest
+  - uses: github/codeql/cpp-queries@latest
+  - uses: github/codeql/go-queries@latest
+  - uses: github/codeql/ruby-queries@latest
+  - uses: github/codeql/csharp-queries@latest
+
+paths-ignore:
+  - 'node_modules/**'
+  - 'dist/**'
+  - 'build/**'
+  - '**/test/**'
+
+paths:
+  - 'src/**'
+  - 'app/**'
