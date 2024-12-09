@@ -1,4 +1,4 @@
-name: "CodeQL Advanced"
+name: "CodeQL"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '27 23 * * 2' # Weekly on Tuesday at 23:27
+    - cron: '26 2 * * 4'
 
 jobs:
   analyze:
@@ -22,59 +22,55 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - language: javascript-typescript
-            build-mode: none
-          - language: python
-            build-mode: none
-          - language: c-cpp
-            build-mode: none
-          - language: java-kotlin
-            build-mode: none
-          - language: ruby
-            build-mode: none
-          - language: go
-            build-mode: none
-          - language: csharp
-            build-mode: none
+        - language: javascript-typescript
+          build-mode: none
+        - language: python
+          build-mode: none
+        - language: c-cpp
+          build-mode: none
+        - language: csharp
+          build-mode: none
+        - language: go
+          build-mode: none
+        - language: java-kotlin
+          build-mode: none
+        - language: ruby
+          build-mode: none
+        - language: swift
+          build-mode: none
 
     steps:
-      # Step 1: Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      # Step 2: Authenticate with npm
-      - name: Authenticate with npm
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+    - name: Authenticate with npm
+      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      # Step 3: Authenticate with PyPI
-      - name: Authenticate with PyPI
-        env:
+    - name: Authenticate with PyPi
+      env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-        run: |
+      run: |
           mkdir -p ~/.config/pip
           echo "[global]" > ~/.config/pip/pip.conf
           echo "extra-index-url=https://__token__:${PYPI_TOKEN}@pypi.org/simple" >> ~/.config/pip/pip.conf
 
-      # Step 4: Initialize CodeQL
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: ${{ matrix.language }}
-          build-mode: ${{ matrix.build-mode }}
-          config-file: codeql-config.yml # Reference custom config
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        build-mode: ${{ matrix.build-mode }}
 
-      # Step 5: Build code manually if needed
-      - if: matrix.build-mode == 'manual'
-        shell: bash
-        run: |
-          echo 'Replace this step with build commands for manual build mode.'
-          echo 'Example:'
-          echo '  make bootstrap'
-          echo '  make release'
-          exit 1
+    - if: matrix.build-mode == 'manual'
+      shell: bash
+      run: |
+        echo 'If you are using a "manual" build mode for one or more of the' \
+          'languages you are analyzing, replace this with the commands to build' \
+          'your code, for example:'
+        echo '  make bootstrap'
+        echo '  make release'
+        exit 1
 
-      # Step 6: Perform CodeQL Analysis
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
-        with:
-          category: "/language:${{matrix.language}}"
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
