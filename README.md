@@ -28,6 +28,33 @@ A brief description of your project goes here.
 - License
 
 # About
+Say what this project is and why it exists.
 
+## Key Highlights
+- Highlight 1: __________
+- Highlight 2: __________
+- Highlight 3: __________
+
+# Features
+
+# Getting Started
+
+## Prequsites
+
+## Installation
+
+## Running the Project
+
+# Screenshots
+
+# Usage
+
+## API Endpoints
+
+# Contributing
+
+# Testing
+
+# License
 
 <div align="center"> Made with ❤️ by [Your Name/Team]. </div>
